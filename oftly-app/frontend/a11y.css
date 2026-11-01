@@ -1,0 +1,63 @@
+/* Accessibility layer. Every rule here is driven by a data-* attribute that a11y.js sets on <html>. */
+#a11y-panel{margin:0 0 0 auto;height:100dvh;max-height:100dvh;width:min(480px,100vw);max-width:100vw;border-radius:24px 0 0 24px;padding:0;display:none;flex-direction:column}
+#a11y-panel[open]{display:flex} .ap-head{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.2rem 1.4rem;border-bottom:1px solid var(--line)} .ap-head h2{font-size:1.5rem}
+.ap-body{overflow:auto;padding:1rem 1.4rem 2rem;display:grid;gap:.7rem;align-content:start} .ap-body h3{margin-top:1rem}
+.ap-note{margin:0;color:var(--mute);font-size:.9rem} .ap-temp{margin:0;padding:.6rem .9rem;border:1px solid var(--accent);border-radius:12px;font-size:.9rem}
+#a11y-panel details{border:1px solid var(--line);border-radius:16px;padding:0 1rem;background:var(--panel)} #a11y-panel summary{cursor:pointer;font-weight:600;min-height:var(--tap);display:flex;align-items:center;justify-content:space-between}
+.ap-count{background:var(--accent);color:var(--on-accent);border-radius:99px;padding:0 .55rem;font-size:.75rem;margin-left:.5rem}.ap-count:empty{display:none}
+.ap-presets,.ap-fields{display:grid;gap:.5rem;padding:.2rem 0 1rem}
+.ap-preset{text-align:left;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:.75rem .9rem;min-height:var(--tap);cursor:pointer;display:grid;gap:.15rem;transition:border-color .2s,background .2s}
+.ap-preset span{font-size:.84rem;color:var(--mute)} .ap-preset:hover{border-color:var(--ink)} .ap-preset[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)} .ap-preset[aria-pressed=true] span{color:var(--bg);opacity:.85}
+.ap-toggle{flex-direction:row;align-items:center;gap:.7rem;color:var(--ink);min-height:var(--tap)} .ap-toggle input{width:1.3rem;height:1.3rem}
+.ap-foot{padding-top:.6rem}
+#dimmer{position:fixed;inset:0;background:#000;opacity:var(--dim,0);pointer-events:none;z-index:999}
+
+/* contrast */
+html[data-contrast="high"]{--bg:#fff;--bg2:#f2f2f2;--panel:#fff;--ink:#000;--mute:#262626;--line:#000;--sand:#e8e8e8;--accent:#8a1c00;--on-accent:#fff}
+html[data-contrast="max"]{--bg:#fff;--bg2:#fff;--panel:#fff;--ink:#000;--mute:#000;--line:#000;--sand:#ececec;--accent:#0b2e8a;--on-accent:#fff}
+html[data-contrast="high"][data-theme="dark"],html[data-contrast="high"][data-theme="warm"]{--bg:#000;--bg2:#000;--panel:#0a0a0a;--ink:#fff;--mute:#ededed;--line:#fff;--sand:#1f1f1f;--accent:#ffb08a;--on-accent:#000}
+html[data-contrast="max"][data-theme="dark"],html[data-contrast="max"][data-theme="warm"]{--bg:#000;--bg2:#000;--panel:#000;--ink:#fff;--mute:#fff;--line:#fff;--sand:#202020;--accent:#8fd0ff;--on-accent:#000}
+@media(prefers-color-scheme:dark){html[data-contrast="high"][data-theme="system"]{--bg:#000;--bg2:#000;--panel:#0a0a0a;--ink:#fff;--mute:#ededed;--line:#fff;--sand:#1f1f1f;--accent:#ffb08a;--on-accent:#000}
+  html[data-contrast="max"][data-theme="system"]{--bg:#000;--bg2:#000;--panel:#000;--ink:#fff;--mute:#fff;--line:#fff;--sand:#202020;--accent:#8fd0ff;--on-accent:#000}}
+html[data-contrast="high"] .card,html[data-contrast="high"] .tile,html[data-contrast="high"] .plan-card,html[data-contrast="high"] .outfit,html[data-contrast="high"] .altcard,html[data-contrast="max"] .card,html[data-contrast="max"] .tile,html[data-contrast="max"] .plan-card,html[data-contrast="max"] .outfit,html[data-contrast="max"] .altcard{border-width:2px}
+html[data-contrast="max"] a:not(.btn):not(.chip):not(.card):not(.logo):not(nav a){text-decoration:underline}
+html[data-contrast="max"] :focus-visible{outline-width:4px}
+
+/* typography */
+html[data-font="readable"]{--font-body:"Atkinson Hyperlegible","Verdana",system-ui,sans-serif;--font-display:"Atkinson Hyperlegible","Verdana",system-ui,sans-serif}
+html[data-font="readable"] h1,html[data-font="readable"] h2,html[data-font="readable"] h3,html[data-font="readable"] .display,html[data-font="readable"] .num,html[data-font="readable"] .look-title,html[data-font="readable"] .logo span,html[data-font="readable"] .marq span{font-style:normal;font-variation-settings:normal;letter-spacing:0;font-weight:700}
+html[data-font="readable"] .display em,html[data-font="readable"] h1 em,html[data-font="readable"] h2 em{font-style:normal;text-decoration:underline;text-decoration-thickness:.06em;text-underline-offset:.12em}
+html[data-font="readable"] .display{font-size:clamp(2.4rem,7vw,5.4rem);line-height:1.08}
+html[data-font="readable"] .bigtype{display:none}
+html[data-bold="on"] body{font-weight:600} html[data-bold="on"] .muted,html[data-bold="on"] small{font-weight:600}
+html[data-links="underline"] a:not(.btn):not(.chip):not(.card):not(.logo):not(.arrow):not(.fab-add){text-decoration:underline;text-underline-offset:.18em;text-decoration-thickness:.1em}
+html[data-width="narrow"] main{max-width:760px} html[data-width="narrow"] .tiles>*{grid-column:1/-1} html[data-width="narrow"] .stage,html[data-width="narrow"] .planner{grid-template-columns:1fr} html[data-width="narrow"] .look-panel{position:static}
+html[data-width="narrow"] p,html[data-width="narrow"] li{max-width:62ch;text-align:left}
+
+/* focus + targets */
+html[data-focus="strong"] :focus-visible{outline:5px solid var(--accent);outline-offset:4px;box-shadow:0 0 0 9px var(--bg)}
+html[data-targets="large"] .row,html[data-targets="xl"] .row,html[data-targets="large"] .chips,html[data-targets="xl"] .chips,html[data-targets="large"] .seg,html[data-targets="xl"] .seg{gap:.9rem}
+html[data-targets="xl"] .btn,html[data-targets="xl"] .chip,html[data-targets="xl"] .seg button{font-size:1.1rem;padding-inline:1.5rem}
+html[data-targets="large"] nav a,html[data-targets="xl"] nav a{display:inline-flex;align-items:center;min-height:var(--tap)} html[data-targets="xl"] .link{min-height:var(--tap);display:inline-flex;align-items:center}
+html[data-targets="xl"] input[type=checkbox]{width:1.6rem;height:1.6rem}
+
+/* simple view hides decoration and secondary content */
+html[data-simple="on"] .deco,html[data-simple="on"] .bigtype,html[data-simple="on"] .marq,html[data-simple="on"] #pre{display:none!important}
+html[data-simple="on"] .collage .piece:nth-child(even){margin-top:0} html[data-simple="on"] .tiles .tile:not(.keep){display:none}
+
+/* motion: reduce keeps meaning but removes movement; none stops everything */
+html[data-motion="reduce"] *,html[data-motion="none"] *{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+html[data-motion="reduce"] .reveal,html[data-motion="none"] .reveal{opacity:1!important;transform:none!important}
+html[data-motion="reduce"] .marq-in,html[data-motion="none"] .marq-in{animation:none!important} html[data-motion="reduce"] #pre,html[data-motion="none"] #pre{display:none!important}
+html[data-motion="none"] .piece .ph img,html[data-motion="none"] .card .ph img{transition:none!important;transform:none!important} html[data-motion="none"] [data-speed]{transform:none!important}
+html[data-motion="none"] .marq button{display:none}
+html[data-motion="reduce"] .ring .fg,html[data-motion="none"] .ring .fg{stroke-dashoffset:calc(289 - 289 * var(--p) / 100)!important} html[data-motion="reduce"] .fbars .gbar i,html[data-motion="none"] .fbars .gbar i{width:var(--v)!important}
+html[data-motion="reduce"] .spark i,html[data-motion="none"] .spark i{height:var(--h)!important}
+
+/* colour support: UI hues that survive each colour-vision type, plus colour NAMES wherever a colour is shown */
+html[data-cvd="protan"],html[data-cvd="deutan"]{--accent:#0b5fa5;--danger:#b25a00;--ok:#0b5fa5;--warn:#6b4a00}
+html[data-cvd="tritan"]{--accent:#b3261e;--danger:#b3261e;--ok:#00695c;--warn:#7a1f1f}
+html[data-cvd="achroma"]{--accent:#000;--danger:#000;--ok:#000;--warn:#000;--on-accent:#fff}
+html[data-cvd="achroma"][data-theme="dark"],html[data-cvd="achroma"][data-theme="warm"]{--accent:#fff;--on-accent:#000}
+html:not([data-cvd="off"]) .cname{display:block!important} html:not([data-cvd="off"]) .stat::before{content:"⚠ "} html:not([data-cvd="off"]) .fav::after{content:" Favourite";font-size:.7rem;font-family:var(--font-body)}
+html[data-cvd="achroma"] img{filter:grayscale(0)} html:not([data-cvd="off"]) .legend span::after{content:attr(data-n)}

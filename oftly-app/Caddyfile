@@ -1,0 +1,5 @@
+# Replace with your real domain. Caddy obtains and renews the HTTPS certificate automatically.
+{$OFTLY_DOMAIN:localhost} {
+	encode gzip
+	reverse_proxy oftly:8000
+}

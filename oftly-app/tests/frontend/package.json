@@ -1,0 +1,3 @@
+{ "name": "oftly-e2e", "private": true, "type": "module",
+  "description": "Real-browser tests. Needs Chrome/Chromium: set CHROME_PATH (macOS: /Applications/Google Chrome.app/Contents/MacOS/Google Chrome) or install @sparticuz/chromium (Linux).",
+  "devDependencies": { "axe-core": "^4.10.0", "puppeteer-core": "^24.0.0", "@sparticuz/chromium": "^138.0.0" } }

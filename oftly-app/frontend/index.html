@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" data-theme="system">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#17140f">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="OFTLY"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="description" content="OFTLY: your wardrobe, reimagined. Style more, buy less.">
+<link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<title>OFTLY — Your Wardrobe. Reimagined.</title>
+<link rel="icon" href="/icons/icon-192.png" type="image/png">
+<link rel="preload" href="/fonts/Fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/InstrumentSans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/a11y.css">
+<script src="/a11y.js"></script>
+</head>
+<body>
+<a class="skip" href="#main" id="skip">Skip to content</a>
+<header class="top">
+  <a class="logo" href="#/" aria-label="OFTLY home"><svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11.2" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M11.2 12.2L16 20.2l4.8-8" fill="none" stroke="#9a3b1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>OFTLY</span></a>
+  <nav id="nav" aria-label="Main">
+    <a href="#/" data-nav="today">Today</a><a href="#/wardrobe" data-nav="wardrobe">Wardrobe</a>
+    <a href="#/outfits" data-nav="outfits">Outfits</a><a href="#/planner" data-nav="planner">Planner</a><a href="#/settings" data-nav="settings">Settings</a>
+  </nav>
+  <div class="top-actions"><a class="btn primary add" href="#/add">Add item</a></div>
+</header>
+<div id="offline" role="status" hidden>You’re offline. OFTLY will reconnect when your connection returns.</div>
+<main id="main" tabindex="-1"></main>
+<a class="fab-add" href="#/add" aria-label="Add item">+</a>
+<footer class="foot"><a href="#/help">Help &amp; support</a><a href="#/privacy">Privacy</a><a href="#/terms">Terms</a><a href="#/community">Community</a><a href="#/app">Get the app</a></footer>
+<dialog id="dlg"></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="/fx.js"></script>
+<script src="/ui-auth.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
